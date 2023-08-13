@@ -32,3 +32,15 @@ def digits_count(input_string: str) -> int:
         if i.isdigit():
             count += 1
     return count
+
+
+# Разделитель чисел на тройки цифр
+def num_sepparator(num: int):
+    """
+    Разделитель чисел на тройки цифр
+    """
+
+    num_str = str(num)[::-1]
+    total_num = [num_str[i:(i + 3)] for i in range(0, len(num_str), 3)]
+    
+    return " ".join(total_num)[::-1]
