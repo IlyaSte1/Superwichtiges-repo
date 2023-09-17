@@ -7,13 +7,11 @@ def generate_password(password_len: int = 20) -> str:
     Генерация пароля
     """
 
-    ABC_LOWER = ''.join(sorted('qwertyuiopasdfghjklzxcvbnm'))
-    ABC_NUMS = str('1234567890')
+    ABC_LOWER = ''.join('qwertyuiopasdfghjklzxcvbnm')
+    ABC_NUMS = '1234567890'
     ABC_FULL = ABC_LOWER + ABC_LOWER.upper() + ABC_NUMS
     
-    final_password = random.choice(ABC_LOWER + ABC_LOWER.upper())
-    for i in range(password_len - 1):
-        final_password += random.choice(ABC_FULL)
+    final_password = random.choice(ABC_LOWER + ABC_LOWER.upper()) + ''.join([random.choice(ABC_FULL) for i in range(password_len - 1)])
 
     if digits_count(final_password) > 0:
         return final_password
@@ -44,3 +42,6 @@ def num_sepparator(num: int):
     total_num = [num_str[i:(i + 3)] for i in range(0, len(num_str), 3)]
     
     return " ".join(total_num)[::-1]
+
+
+print(generate_password())
